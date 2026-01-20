@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Menu, X } from "lucide-react";
+import { MapPin, Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -9,20 +9,28 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-card shadow-sm">
       {/* Top bar */}
-      <div className="bg-primary text-primary-foreground py-2">
-        <div className="container-tanzy flex flex-wrap items-center justify-between text-sm gap-2">
-          <div className="flex items-center gap-4 flex-wrap">
-            <a href="tel:+56920692796" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="h-3 w-3" />
-              <span>+56 9 2069 2796</span>
+      <div className="bg-card border-b border-border py-2">
+        <div className="container-tanzy flex flex-wrap items-center justify-between text-sm gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://wa.me/56920692796"
+              className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-secondary-foreground shadow-sm transition hover:bg-secondary/90 sm:text-sm"
+              aria-label="Escríbenos por WhatsApp al +56 9 2069 2796"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              Escríbenos por WhatsApp
             </a>
-            <a href="tel:+56953232954" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="h-3 w-3" />
-              <span>+56 9 5323 2954</span>
+            <a
+              href="https://wa.me/56953232954"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-primary shadow-sm transition hover:border-secondary/60 hover:text-secondary sm:text-sm"
+              aria-label="Escríbenos por WhatsApp al +56 9 5323 2954"
+            >
+              <WhatsAppIcon className="h-4 w-4 text-secondary" />
+              Escríbenos por WhatsApp
             </a>
           </div>
-          <div className="flex items-center gap-1 text-xs md:text-sm">
-            <MapPin className="h-3 w-3" />
+          <div className="flex items-center gap-1 text-xs md:text-sm text-muted-foreground">
+            <MapPin className="h-3.5 w-3.5 text-primary" />
             <span className="hidden sm:inline">Chillán, Chile</span>
             <span className="sm:hidden">Chillán</span>
           </div>
@@ -33,11 +41,14 @@ export function Header() {
       <nav className="container-tanzy py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <img 
-              src={logo} 
-              alt="TANZY Ferreterías" 
-              className="h-12 md:h-14 w-auto"
-            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-lg font-extrabold tracking-wide text-primary sm:text-xl md:text-2xl">
+                TANZY <span className="text-accent">FERRETERÍAS</span>
+              </span>
+              <span className="text-xs font-medium text-muted-foreground sm:text-sm">
+                Hacemos tu día más simple
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
