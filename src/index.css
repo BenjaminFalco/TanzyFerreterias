@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* TANZY Brand Colors - Inspired by logo */
+    --background: 0 0% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Primary - Navy Blue from logo */
+    --primary: 215 70% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Green from logo */
+    --secondary: 145 65% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 45%;
+
+    /* Accent - Red from logo (used sparingly) */
+    --accent: 0 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 215 70% 20%;
+
+    --radius: 0.5rem;
+
+    /* Custom TANZY tokens */
+    --tanzy-blue: 215 70% 20%;
+    --tanzy-blue-light: 210 60% 50%;
+    --tanzy-green: 145 65% 40%;
+    --tanzy-green-light: 145 55% 50%;
+    --tanzy-red: 0 75% 50%;
+    --tanzy-white: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 25% 15%;
+    --sidebar-primary: 215 70% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 65% 40%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 214 20% 88%;
+    --sidebar-ring: 215 70% 20%;
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 210 60% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 145 55% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 0 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 210 60% 50%;
+
+    --sidebar-background: 215 25% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 210 60% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 55% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 210 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-tanzy-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 font-semibold rounded-lg px-6 py-3;
+  }
+
+  .btn-tanzy-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-200 font-semibold rounded-lg px-6 py-3;
+  }
+
+  .btn-tanzy-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 font-semibold rounded-lg px-6 py-3;
+  }
+
+  .product-card {
+    @apply bg-card rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-border;
+  }
+
+  .product-card:hover {
+    @apply -translate-y-1;
+  }
+
+  .badge-stock {
+    @apply px-2 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-stock-available {
+    @apply badge-stock bg-secondary/10 text-secondary;
+  }
+
+  .badge-stock-low {
+    @apply badge-stock bg-accent/10 text-accent;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-foreground;
+  }
+
+  .container-tanzy {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient-tanzy {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
