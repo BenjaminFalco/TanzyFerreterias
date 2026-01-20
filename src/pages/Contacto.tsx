@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 const Contacto = () => {
   return (
@@ -9,12 +10,17 @@ const Contacto = () => {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary to-secondary py-16">
-          <div className="container-tanzy text-center text-primary-foreground">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Contáctanos</h1>
-            <p className="text-primary-foreground/80 text-lg max-w-xl mx-auto">
-              Estamos aquí para ayudarte con tu proyecto. 
-              Visítanos o comunícate con nosotros.
+        <section className="bg-card border-b border-border py-16">
+          <div className="container-tanzy text-center">
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+              Atención cercana y rápida
+            </span>
+            <h1 className="text-3xl md:text-4xl font-bold text-primary mt-3 mb-4">
+              Contáctanos
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              Estamos aquí para ayudarte con tu proyecto. Escríbenos por WhatsApp
+              o visita nuestras sucursales en Chillán.
             </p>
           </div>
         </section>
@@ -23,36 +29,40 @@ const Contacto = () => {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
+              <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+                <h2 className="section-title mb-3">Contacto rápido</h2>
+                <p className="text-muted-foreground mb-6">
+                  Resolvemos tus dudas y cotizaciones en minutos. Elige la vía
+                  más rápida y conversa con nuestro equipo.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <a
+                    href="https://wa.me/56920692796"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground shadow-sm transition hover:bg-secondary/90"
+                    aria-label="Escríbenos por WhatsApp al +56 9 2069 2796"
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    Escríbenos por WhatsApp
+                  </a>
+                  <a
+                    href="https://wa.me/56953232954"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-secondary/30 bg-white px-4 py-3 text-sm font-semibold text-secondary transition hover:border-secondary/60 hover:text-secondary"
+                    aria-label="Escríbenos por WhatsApp al +56 9 5323 2954"
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    Escríbenos por WhatsApp
+                  </a>
+                </div>
+              </div>
+
               <div>
                 <h2 className="section-title mb-6">Información de Contacto</h2>
-                
-                <div className="space-y-6">
-                  {/* Phones */}
-                  <div className="flex items-start gap-4">
-                    <div className="bg-secondary/10 rounded-lg p-3">
-                      <Phone className="h-6 w-6 text-secondary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Teléfonos</h3>
-                      <a 
-                        href="tel:+56920692796" 
-                        className="block text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        +56 9 2069 2796
-                      </a>
-                      <a 
-                        href="tel:+56953232954" 
-                        className="block text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        +56 9 5323 2954
-                      </a>
-                    </div>
-                  </div>
 
+                <div className="space-y-6">
                   {/* Locations */}
-                  <div className="flex items-start gap-4">
-                    <div className="bg-secondary/10 rounded-lg p-3">
-                      <MapPin className="h-6 w-6 text-secondary" />
+                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                    <div className="bg-primary/10 rounded-lg p-3">
+                      <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Sucursales</h3>
@@ -66,9 +76,9 @@ const Contacto = () => {
                   </div>
 
                   {/* Hours */}
-                  <div className="flex items-start gap-4">
-                    <div className="bg-secondary/10 rounded-lg p-3">
-                      <Clock className="h-6 w-6 text-secondary" />
+                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                    <div className="bg-accent/10 rounded-lg p-3">
+                      <Clock className="h-6 w-6 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Horario de Atención</h3>
@@ -91,27 +101,27 @@ const Contacto = () => {
                 <h3 className="font-semibold text-foreground mb-4">Nuestros Rubros</h3>
                 <ul className="grid grid-cols-2 gap-2 text-muted-foreground text-sm">
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Maderas y tableros
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Materiales de construcción
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Pinturas
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Fierros
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Perfiles
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-secondary rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Metalcón
                   </li>
                 </ul>
