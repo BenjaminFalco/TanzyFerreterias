@@ -1,47 +1,28 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-card shadow-sm">
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground py-2">
-        <div className="container-tanzy flex flex-wrap items-center justify-between text-sm gap-2">
-          <div className="flex items-center gap-4 flex-wrap">
-            <a href="tel:+56920692796" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="h-3 w-3" />
-              <span>+56 9 2069 2796</span>
-            </a>
-            <a href="tel:+56953232954" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
-              <Phone className="h-3 w-3" />
-              <span>+56 9 5323 2954</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-1 text-xs md:text-sm">
-            <MapPin className="h-3 w-3" />
-            <span className="hidden sm:inline">Chillán, Chile</span>
-            <span className="sm:hidden">Chillán</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main navigation */}
       <nav className="container-tanzy py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
-            <img 
-              src={logo} 
-              alt="TANZY Ferreterías" 
-              className="h-12 md:h-14 w-auto"
-            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-lg font-extrabold tracking-wide text-primary sm:text-xl md:text-2xl">
+                TANZY <span className="text-accent">FERRETERÍAS</span>
+              </span>
+              <span className="text-xs font-medium text-muted-foreground sm:text-sm">
+                Hacemos tu día más simple
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <Link 
               to="/" 
               className="font-medium text-foreground hover:text-primary transition-colors"
@@ -56,7 +37,6 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-foreground hover:text-primary transition-colors"

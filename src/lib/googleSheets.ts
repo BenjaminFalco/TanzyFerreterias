@@ -43,6 +43,28 @@ export async function fetchProducts(): Promise<Product[]> {
     
     const data: SheetResponse = JSON.parse(jsonMatch[1]);
     const rows = data.table.rows;
+    const columns = data.table.cols.map((col) => col.label || "");
+
+    const normalizeLabel = (label: string) =>
+      label
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "");
+
+    const findColumnIndex = (targets: string[]) => {
+      const normalizedTargets = targets.map(normalizeLabel);
+      return columns.findIndex((label) => normalizedTargets.includes(normalizeLabel(label)));
+    };
+
+    const getCellValue = (cells: ({ v: string | number | null } | null)[], index: number) =>
+      index >= 0 ? cells[index]?.v : null;
+
+    const foto1Index = findColumnIndex(["foto1", "foto 1", "imagen1", "imagen 1"]);
+    const foto2Index = findColumnIndex(["foto2", "foto 2", "imagen2", "imagen 2"]);
+    const foto3Index = findColumnIndex(["foto3", "foto 3", "imagen3", "imagen 3"]);
+    const foto4Index = findColumnIndex(["foto4", "foto 4", "imagen4", "imagen 4"]);
+    const foto5Index = findColumnIndex(["foto5", "foto 5", "imagen5", "imagen 5"]);
     
     // Skip header row (index 0) and map remaining rows to products
     const products: Product[] = rows.slice(1).map((row) => {
@@ -70,11 +92,11 @@ export async function fetchProducts(): Promise<Product[]> {
         iva_rate: parseNumber(cells[18]?.v),
         lead_time_dias: parseNumber(cells[19]?.v),
         activo: parseBoolean(cells[20]?.v),
-        foto1: cells[21]?.v?.toString() || "",
-        foto2: cells[22]?.v?.toString() || "",
-        foto3: cells[23]?.v?.toString() || "",
-        foto4: cells[24]?.v?.toString() || "",
-        foto5: cells[25]?.v?.toString() || "",
+        foto1: getCellValue(cells, foto1Index)?.toString() || cells[21]?.v?.toString() || "",
+        foto2: getCellValue(cells, foto2Index)?.toString() || cells[22]?.v?.toString() || "",
+        foto3: getCellValue(cells, foto3Index)?.toString() || cells[23]?.v?.toString() || "",
+        foto4: getCellValue(cells, foto4Index)?.toString() || cells[24]?.v?.toString() || "",
+        foto5: getCellValue(cells, foto5Index)?.toString() || cells[25]?.v?.toString() || "",
       };
     }).filter((product) => product.sku && product.activo);
     
