@@ -1,11 +1,10 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, MessageCircle, Package, MapPin, Barcode } from "lucide-react";
+import { ArrowLeft, Package, MapPin, Barcode } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ImageGallery } from "@/components/ImageGallery";
 import { useProduct } from "@/hooks/useProducts";
 import { getProductImages } from "@/lib/googleSheets";
-import { Button } from "@/components/ui/button";
 
 const ProductDetail = () => {
   const { sku } = useParams<{ sku: string }>();
@@ -59,6 +58,8 @@ const ProductDetail = () => {
 
   const images = getProductImages(product);
   const stockAvailable = product.stock_disponible > 0;
+  const whatsappMessage = `Hola, quiero el producto ${product.nombre} (SKU ${product.sku}).`;
+  const whatsappLink = `https://wa.me/56920692796?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -151,27 +152,19 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {/* Action Buttons (Demo only) */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                <Button 
-                  className="btn-tanzy-secondary flex-1"
-                  onClick={() => alert("Función demostrativa: Agregar al carro")}
+              {/* Action Button */}
+              <div className="pt-4">
+                <a
+                  href={whatsappLink}
+                  className="btn-tanzy-secondary inline-flex w-full items-center justify-center"
+                  aria-label={`Lo quiero: ${product.nombre}`}
                 >
-                  <ShoppingCart className="h-5 w-5 mr-2" />
-                  Agregar al carro
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="btn-tanzy-outline flex-1"
-                  onClick={() => alert("Función demostrativa: Cotizar producto")}
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Cotizar
-                </Button>
+                  Lo quiero
+                </a>
               </div>
 
               <p className="text-xs text-muted-foreground text-center">
-                * Este es un catálogo demostrativo. Consulte disponibilidad en tienda.
+                * Consulta disponibilidad y coordinación de compra vía WhatsApp.
               </p>
             </div>
           </div>

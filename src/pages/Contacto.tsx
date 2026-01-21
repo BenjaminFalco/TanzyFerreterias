@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MapPin, Clock } from "lucide-react";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 const Contacto = () => {
   return (
@@ -19,8 +18,8 @@ const Contacto = () => {
               Contáctanos
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Estamos aquí para ayudarte con tu proyecto. Escríbenos por WhatsApp
-              o visita nuestras sucursales en Chillán.
+              Estamos aquí para ayudarte con tu proyecto. Visita nuestras
+              sucursales en Chillán para una atención cercana.
             </p>
           </div>
         </section>
@@ -32,26 +31,16 @@ const Contacto = () => {
               <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
                 <h2 className="section-title mb-3">Contacto rápido</h2>
                 <p className="text-muted-foreground mb-6">
-                  Resolvemos tus dudas y cotizaciones en minutos. Elige la vía
-                  más rápida y conversa con nuestro equipo.
+                  Resolvemos tus dudas y cotizaciones en minutos. Visítanos en
+                  tienda para una atención cercana y personalizada.
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <a
-                    href="https://wa.me/56920692796"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground shadow-sm transition hover:bg-secondary/90"
-                    aria-label="Escríbenos por WhatsApp al +56 9 2069 2796"
-                  >
-                    <WhatsAppIcon className="h-5 w-5" />
-                    Escríbenos por WhatsApp
-                  </a>
-                  <a
-                    href="https://wa.me/56953232954"
-                    className="flex items-center justify-center gap-2 rounded-xl border border-secondary/30 bg-white px-4 py-3 text-sm font-semibold text-secondary transition hover:border-secondary/60 hover:text-secondary"
-                    aria-label="Escríbenos por WhatsApp al +56 9 5323 2954"
-                  >
-                    <WhatsAppIcon className="h-5 w-5" />
-                    Escríbenos por WhatsApp
-                  </a>
+                  <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+                    Atención en dos sucursales con horario extendido.
+                  </div>
+                  <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+                    Catálogo actualizado con stock disponible.
+                  </div>
                 </div>
               </div>
 
